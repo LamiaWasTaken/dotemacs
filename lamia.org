@@ -20,3 +20,11 @@ Move customization information to its own file.  This avoids cluttering [[file:i
   (load custom-file t)
 #+END_SRC
 
+* Indentation
+
+Indent with spaces instead of tabs.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default indent-tabs-mode nil)
+#+END_SRC
+
