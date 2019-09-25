@@ -1,4 +1,2 @@
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; Load the config
+(org-babel-load-file (expand-file-name "lamia.org" user-emacs-directory))

@@ -1,0 +1,22 @@
+#+TITLE: lamia.org --- My personal GNU Emacs configuration
+#+AUTHOR: Geoffrey T. Wark
+
+
+* First Things First
+
+Save backups and auto-saves to the system's =temp= directory.
+
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+	`((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+	`((".*" ,temporary-file-directory t)))
+#+END_SRC
+
+Move customization information to its own file.  This avoids cluttering [[file:init.el][init.el]].
+
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file t)
+#+END_SRC
+
