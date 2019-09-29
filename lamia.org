@@ -30,6 +30,13 @@ Move customization information to its own file.  This avoids cluttering [[file:i
     (load-theme 'zenburn t))
 #+END_SRC
 
+Make cursor more obvious and stop the goddamn blinking!
+
+#+BEGIN_SRC emacs-lisp
+  (set-cursor-color "red")
+  (blink-cursor-mode 0)
+#+END_SRC
+
 * Indentation
 
 Indent with spaces instead of tabs.
