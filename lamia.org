@@ -45,6 +45,16 @@ Make cursor more obvious and stop the goddamn blinking!
   (add-to-list 'default-frame-alist '(font . "Hack-11"))
 #+END_SRC
 
+** General
+
+Free up screen real estate.
+
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+#+END_SRC
+
 * Indentation
 
 Indent with spaces instead of tabs.
