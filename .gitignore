@@ -2,4 +2,5 @@ auto-save-list/
 custom.el
 elpa/
 lamia.el
+.last-package-update-day
 session.*

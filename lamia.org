@@ -53,3 +53,24 @@ Indent with spaces instead of tabs.
   (setq-default indent-tabs-mode nil)
 #+END_SRC
 
+* Packages
+
+Ensure packages get installed if not already present on the machine.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+#+END_SRC
+
+Keep packages up-to-date.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-package-update
+    :config
+    (setq auto-package-update-delete-old-versions t)
+    (setq auto-package-update-hide-results t)
+    (auto-package-update-maybe))
+#+END_SRC
+
+** From MELPA
+** Built-in
