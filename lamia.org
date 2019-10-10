@@ -84,3 +84,12 @@ Keep packages up-to-date.
 
 ** From MELPA
 ** Built-in
+
+* Finishing Touches
+** Load Private Settings
+
+For settings that are me specific.
+
+#+BEGIN_SRC emacs-lisp
+  (load "~/Nextcloud/docs/private.el" t)
+#+END_SRC
