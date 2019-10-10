@@ -20,6 +20,12 @@ Move customization information to its own file.  This avoids cluttering [[file:i
   (load custom-file t)
 #+END_SRC
 
+Ask for confirmation when leaving Emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (setq confirm-kill-emacs 'yes-or-no-p)
+#+END_SRC
+
 * UI
 ** Theme
 
