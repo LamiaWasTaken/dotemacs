@@ -84,6 +84,16 @@ Keep packages up-to-date.
 
 ** From MELPA
 ** Built-in
+** Org mode related
+
+Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole's Org tutorial]].
+
+#+BEGIN_SRC emacs-lisp
+  (require 'org)
+  (define-key global-map "\C-ca" #'org-agenda)
+  (setq org-log-done 'time)
+#+END_SRC
+
 
 * Finishing Touches
 ** Load Private Settings
