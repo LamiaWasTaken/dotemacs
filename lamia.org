@@ -119,6 +119,32 @@ Interactively Do Things
 
 #+BEGIN_SRC emacs-lisp
   (ido-mode t)
+  (ido-everywhere)
+#+END_SRC
+
+**** ido-vertical-mode (from MELPA)
+
+Makes ido-mode display vertically.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ido-vertical-mode
+    :init
+    (ido-vertical-mode 1)
+    :config
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+#+END_SRC
+
+**** flx-ido (from MELPA)
+
+flx integration for ido
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flx-ido
+    :init
+    (flx-ido-mode 1)
+    :config
+    (setq ido-enable-flex-matching t)
+    (setq ido-use-faces nil))
 #+END_SRC
 
 ** Org mode related
