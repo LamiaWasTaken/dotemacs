@@ -100,6 +100,18 @@ A Git porcelain inside Emacs.
     (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 #+END_SRC
 
+*** smex
+
+M-x interface with Ido-style fuzzy matching.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package smex
+    :bind (("M-x" . smex)
+           ("M-X" . smex-major-mode-commands))
+    :init
+    (smex-initialize))
+#+END_SRC
+
 ** Built-in
 *** Ido
 
