@@ -89,6 +89,17 @@ Keep packages up-to-date.
 #+END_SRC
 
 ** From MELPA
+*** magit
+
+A Git porcelain inside Emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :bind ("C-c g" . magit)
+    :config
+    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+#+END_SRC
+
 ** Built-in
 *** Ido
 
