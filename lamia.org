@@ -90,6 +90,14 @@ Keep packages up-to-date.
 
 ** From MELPA
 ** Built-in
+*** Ido
+
+Interactively Do Things
+
+#+BEGIN_SRC emacs-lisp
+  (ido-mode t)
+#+END_SRC
+
 ** Org mode related
 
 Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole's Org tutorial]].
