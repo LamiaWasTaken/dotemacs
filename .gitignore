@@ -4,3 +4,4 @@ elpa/
 lamia.el
 .last-package-update-day
 session.*
+transient/
