@@ -157,6 +157,12 @@ Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole
   (setq org-log-done 'time)
 #+END_SRC
 
+Hide emphasis markup.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-hide-emphasis-markers t)
+#+END_SRC
+
 
 * Finishing Touches
 ** Load Private Settings
