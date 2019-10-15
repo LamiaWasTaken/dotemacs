@@ -163,6 +163,22 @@ Hide emphasis markup.
   (setq org-hide-emphasis-markers t)
 #+END_SRC
 
+*** Source Blocks
+
+Disable fontification.
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-src-fontify-natively nil)
+#+END_SRC
+
+Make source code blocks more obvious by changing the background color.
+
+#+BEGIN_SRC emacs-lisp
+  (dolist (face '(org-block
+                  org-block-begin-line
+                  org-block-end-line))
+    (set-face-background face "gray17"))
+#+END_SRC
 
 * Finishing Touches
 ** Load Private Settings
