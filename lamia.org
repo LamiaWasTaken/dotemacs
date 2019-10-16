@@ -43,6 +43,12 @@ Make cursor more obvious and stop the goddamn blinking!
   (blink-cursor-mode 0)
 #+END_SRC
 
+Change region colors so that it's more obvious.
+
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'region nil :background "white smoke" :foreground "black")
+#+END_SRC
+
 ** Font
 
 [[https://sourcefoundry.org/hack/][Hack]] is a nice, easy-to-read font.
