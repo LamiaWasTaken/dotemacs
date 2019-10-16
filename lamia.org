@@ -100,6 +100,18 @@ A Git porcelain inside Emacs.
     (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 #+END_SRC
 
+*** multiple-cursors
+
+Multiple cursors for Emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package multiple-cursors
+    :bind (("C-S-c C-S-c" . mc/edit-lines)
+           ("C->" . mc/mark-next-like-this)
+           ("C-<" . mc/mark-previous-like-this)
+           ("C-c C-<" . mc/mark-all-like-this)))
+#+END_SRC
+
 *** smex
 
 M-x interface with Ido-style fuzzy matching.
