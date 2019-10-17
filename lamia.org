@@ -198,6 +198,16 @@ Make source code blocks more obvious by changing the background color.
     (set-face-background face "gray17"))
 #+END_SRC
 
+*** Packages
+**** org-bullets
+
+Show bullets in org-mode as UTF-8 characters
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :hook (org-mode . org-bullets-mode))
+#+END_SRC
+
 * Finishing Touches
 ** Load Private Settings
 
