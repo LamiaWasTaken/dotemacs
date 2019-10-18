@@ -130,6 +130,17 @@ M-x interface with Ido-style fuzzy matching.
     (smex-initialize))
 #+END_SRC
 
+*** yasnippet
+
+Yet another snippet extension for Emacs
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure yasnippet-snippets
+    :init
+    (yas-global-mode 1))
+#+END_SRC
+
 ** Built-in
 *** Ido
 
