@@ -192,6 +192,12 @@ Hide emphasis markup.
   (setq org-hide-emphasis-markers t)
 #+END_SRC
 
+Change the ellipsis to a cornered arrow.
+
+#+begin_src emacs-lisp
+  (setq org-ellipsis "⤵")
+#+end_src
+
 *** Source Blocks
 
 Disable fontification.
