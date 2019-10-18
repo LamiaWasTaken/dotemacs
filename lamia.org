@@ -6,195 +6,195 @@
 
 Save backups and auto-saves to the system's =temp= directory.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq backup-directory-alist
 	`((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms
 	`((".*" ,temporary-file-directory t)))
-#+END_SRC
+#+end_src
 
 Move customization information to its own file.  This avoids cluttering [[file:init.el][init.el]].
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file t)
-#+END_SRC
+#+end_src
 
 Ask for confirmation when leaving Emacs.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq confirm-kill-emacs 'yes-or-no-p)
-#+END_SRC
+#+end_src
 
 * UI
 ** Theme
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package zenburn-theme
     :ensure t
     :config
     (load-theme 'zenburn t))
-#+END_SRC
+#+end_src
 
 Make cursor more obvious and stop the goddamn blinking!
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (set-cursor-color "red")
   (blink-cursor-mode 0)
-#+END_SRC
+#+end_src
 
 Change region colors so that it's more obvious.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (set-face-attribute 'region nil :background "white smoke" :foreground "black")
-#+END_SRC
+#+end_src
 
 ** Font
 
 [[https://sourcefoundry.org/hack/][Hack]] is a nice, easy-to-read font.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (add-to-list 'default-frame-alist '(font . "Hack-11"))
-#+END_SRC
+#+end_src
 
 ** General
 
 Free up screen real estate.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
-#+END_SRC
+#+end_src
 
 * Indentation
 
 Indent with spaces instead of tabs.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq-default indent-tabs-mode nil)
-#+END_SRC
+#+end_src
 
 * Packages
 
 Ensure packages get installed if not already present on the machine.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (require 'use-package-ensure)
   (setq use-package-always-ensure t)
-#+END_SRC
+#+end_src
 
 Keep packages up-to-date.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package auto-package-update
     :config
     (setq auto-package-update-delete-old-versions t)
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
-#+END_SRC
+#+end_src
 
 ** From MELPA
 *** magit
 
 A Git porcelain inside Emacs.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package magit
     :bind ("C-c g" . magit)
     :config
     (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
-#+END_SRC
+#+end_src
 
 *** multiple-cursors
 
 Multiple cursors for Emacs.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package multiple-cursors
     :bind (("C-S-c C-S-c" . mc/edit-lines)
            ("C->" . mc/mark-next-like-this)
            ("C-<" . mc/mark-previous-like-this)
            ("C-c C-<" . mc/mark-all-like-this)))
-#+END_SRC
+#+end_src
 
 *** smex
 
 M-x interface with Ido-style fuzzy matching.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package smex
     :bind (("M-x" . smex)
            ("M-X" . smex-major-mode-commands))
     :init
     (smex-initialize))
-#+END_SRC
+#+end_src
 
 *** yasnippet
 
 Yet another snippet extension for Emacs
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package yasnippet
     :ensure yasnippet-snippets
     :init
     (yas-global-mode 1))
-#+END_SRC
+#+end_src
 
 ** Built-in
 *** Ido
 
 Interactively Do Things
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (ido-mode t)
   (ido-everywhere)
-#+END_SRC
+#+end_src
 
 **** ido-vertical-mode (from MELPA)
 
 Makes ido-mode display vertically.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package ido-vertical-mode
     :init
     (ido-vertical-mode 1)
     :config
     (setq ido-vertical-define-keys 'C-n-and-C-p-only))
-#+END_SRC
+#+end_src
 
 **** flx-ido (from MELPA)
 
 flx integration for ido
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package flx-ido
     :init
     (flx-ido-mode 1)
     :config
     (setq ido-enable-flex-matching t)
     (setq ido-use-faces nil))
-#+END_SRC
+#+end_src
 
 ** Org mode related
 
 Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole's Org tutorial]].
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (require 'org)
   (define-key global-map "\C-ca" #'org-agenda)
   (setq org-log-done 'time)
-#+END_SRC
+#+end_src
 
 Hide emphasis markup.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq org-hide-emphasis-markers t)
-#+END_SRC
+#+end_src
 
 Change the ellipsis to a cornered arrow.
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq org-ellipsis "⤵")
 #+end_src
 
@@ -202,34 +202,36 @@ Change the ellipsis to a cornered arrow.
 
 Disable fontification.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (setq org-src-fontify-natively nil)
-#+END_SRC
+#+end_src
 
 Make source code blocks more obvious by changing the background color.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (dolist (face '(org-block
                   org-block-begin-line
                   org-block-end-line))
     (set-face-background face "gray17"))
-#+END_SRC
+#+end_src
 
 *** Packages
 **** org-bullets
 
 Show bullets in org-mode as UTF-8 characters
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (use-package org-bullets
     :hook (org-mode . org-bullets-mode))
-#+END_SRC
+#+end_src
 
 * Finishing Touches
 ** Load Private Settings
 
 For settings that are me specific.
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp :tangle yes
   (load "~/Nextcloud/docs/private.el" t)
-#+END_SRC
+#+end_src
+
+
