@@ -4,240 +4,240 @@
 
 * First Things First
 
-  Save backups and auto-saves to the system's =temp= directory.
+Save backups and auto-saves to the system's =temp= directory.
 
-  #+begin_src emacs-lisp :tangle yes
-    (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+#+end_src
 
-  Move customization information to its own file.  This avoids cluttering [[file:init.el][init.el]].
+Move customization information to its own file.  This avoids cluttering [[file:init.el][init.el]].
 
-  #+begin_src emacs-lisp :tangle yes
-    (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-    (load custom-file t)
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file t)
+#+end_src
 
-  Ask for confirmation when leaving Emacs.
+Ask for confirmation when leaving Emacs.
 
-  #+begin_src emacs-lisp :tangle yes
-    (setq confirm-kill-emacs 'yes-or-no-p)
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq confirm-kill-emacs 'yes-or-no-p)
+#+end_src
 
 * UI
 ** Theme
 
-   #+begin_src emacs-lisp :tangle yes
-     (use-package zenburn-theme
-       :ensure t
-       :config
-       (load-theme 'zenburn t))
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package zenburn-theme
+    :ensure t
+    :config
+    (load-theme 'zenburn t))
+#+end_src
 
-   Make cursor more obvious and stop the goddamn blinking!
+Make cursor more obvious and stop the goddamn blinking!
 
-   #+begin_src emacs-lisp :tangle yes
-     (set-cursor-color "red")
-     (blink-cursor-mode 0)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (set-cursor-color "red")
+  (blink-cursor-mode 0)
+#+end_src
 
-   Change region colors so that it's more obvious.
+Change region colors so that it's more obvious.
 
-   #+begin_src emacs-lisp :tangle yes
-     (set-face-attribute 'region nil :background "white smoke" :foreground "black")
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (set-face-attribute 'region nil :background "white smoke" :foreground "black")
+#+end_src
 
 ** Font
 
-   [[https://sourcefoundry.org/hack/][Hack]] is a nice, easy-to-read font.
+[[https://sourcefoundry.org/hack/][Hack]] is a nice, easy-to-read font.
 
-   #+begin_src emacs-lisp :tangle yes
-     (add-to-list 'default-frame-alist '(font . "Hack-11"))
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (add-to-list 'default-frame-alist '(font . "Hack-11"))
+#+end_src
 
 ** General
 
-   Free up screen real estate.
+Free up screen real estate.
 
-   #+begin_src emacs-lisp :tangle yes
-     (menu-bar-mode -1)
-     (scroll-bar-mode -1)
-     (tool-bar-mode -1)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1)
+#+end_src
 
 * Indentation
 
-  Indent with spaces instead of tabs.
+Indent with spaces instead of tabs.
 
-  #+begin_src emacs-lisp :tangle yes
-    (setq-default indent-tabs-mode nil)
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq-default indent-tabs-mode nil)
+#+end_src
 
 * Packages
 
-  Ensure packages get installed if not already present on the machine.
+Ensure packages get installed if not already present on the machine.
 
-  #+begin_src emacs-lisp :tangle yes
-    (require 'use-package-ensure)
-    (setq use-package-always-ensure t)
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+#+end_src
 
-  Keep packages up-to-date.
+Keep packages up-to-date.
 
-  #+begin_src emacs-lisp :tangle yes
-    (use-package auto-package-update
-      :config
-      (setq auto-package-update-delete-old-versions t)
-      (setq auto-package-update-hide-results t)
-      (auto-package-update-maybe))
-  #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package auto-package-update
+    :config
+    (setq auto-package-update-delete-old-versions t)
+    (setq auto-package-update-hide-results t)
+    (auto-package-update-maybe))
+#+end_src
 
 ** From MELPA
 *** magit
 
-    A Git porcelain inside Emacs.
+A Git porcelain inside Emacs.
 
-    #+begin_src emacs-lisp :tangle yes
-      (use-package magit
-        :bind ("C-c g" . magit)
-        :config
-        (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package magit
+    :bind ("C-c g" . magit)
+    :config
+    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+#+end_src
 
 *** multiple-cursors
 
-    Multiple cursors for Emacs.
+Multiple cursors for Emacs.
 
-    #+begin_src emacs-lisp :tangle yes
-      (use-package multiple-cursors
-        :bind (("C-S-c C-S-c" . mc/edit-lines)
-               ("C->" . mc/mark-next-like-this)
-               ("C-<" . mc/mark-previous-like-this)
-               ("C-c C-<" . mc/mark-all-like-this)))
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package multiple-cursors
+    :bind (("C-S-c C-S-c" . mc/edit-lines)
+           ("C->" . mc/mark-next-like-this)
+           ("C-<" . mc/mark-previous-like-this)
+           ("C-c C-<" . mc/mark-all-like-this)))
+#+end_src
 
 *** smex
 
-    M-x interface with Ido-style fuzzy matching.
+M-x interface with Ido-style fuzzy matching.
 
-    #+begin_src emacs-lisp :tangle yes
-      (use-package smex
-        :bind (("M-x" . smex)
-               ("M-X" . smex-major-mode-commands))
-        :init
-        (smex-initialize))
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package smex
+    :bind (("M-x" . smex)
+           ("M-X" . smex-major-mode-commands))
+    :init
+    (smex-initialize))
+#+end_src
 
 *** yasnippet
 
-    Yet another snippet extension for Emacs
+Yet another snippet extension for Emacs
 
-    #+begin_src emacs-lisp :tangle yes
-      (use-package yasnippet
-        :ensure yasnippet-snippets
-        :init
-        (yas-global-mode 1))
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package yasnippet
+    :ensure yasnippet-snippets
+    :init
+    (yas-global-mode 1))
+#+end_src
 
 ** Built-in
 *** Ido
 
-    Interactively Do Things
+Interactively Do Things
 
-    #+begin_src emacs-lisp :tangle yes
-      (ido-mode t)
-      (ido-everywhere)
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (ido-mode t)
+  (ido-everywhere)
+#+end_src
 
 **** ido-vertical-mode (from MELPA)
 
-     Makes ido-mode display vertically.
+Makes ido-mode display vertically.
 
-     #+begin_src emacs-lisp :tangle yes
-       (use-package ido-vertical-mode
-         :init
-         (ido-vertical-mode 1)
-         :config
-         (setq ido-vertical-define-keys 'C-n-and-C-p-only))
-     #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package ido-vertical-mode
+    :init
+    (ido-vertical-mode 1)
+    :config
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+#+end_src
 
 **** flx-ido (from MELPA)
 
-     flx integration for ido
+flx integration for ido
 
-     #+begin_src emacs-lisp :tangle yes
-       (use-package flx-ido
-         :init
-         (flx-ido-mode 1)
-         :config
-         (setq ido-enable-flex-matching t)
-         (setq ido-use-faces nil))
-     #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package flx-ido
+    :init
+    (flx-ido-mode 1)
+    :config
+    (setq ido-enable-flex-matching t)
+    (setq ido-use-faces nil))
+#+end_src
 
 ** Org mode related
 
-   Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole's Org tutorial]].
+Per [[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][David O'Toole's Org tutorial]].
 
-   #+begin_src emacs-lisp :tangle yes
-     (require 'org)
-     (define-key global-map "\C-ca" #'org-agenda)
-     (setq org-log-done 'time)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (require 'org)
+  (define-key global-map "\C-ca" #'org-agenda)
+  (setq org-log-done 'time)
+#+end_src
 
-   Hide emphasis markup.
+Hide emphasis markup.
 
-   #+begin_src emacs-lisp :tangle yes
-     (setq org-hide-emphasis-markers t)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq org-hide-emphasis-markers t)
+#+end_src
 
-   Change the ellipsis to a cornered arrow.
+Change the ellipsis to a cornered arrow.
 
-   #+begin_src emacs-lisp :tangle yes
-     (setq org-ellipsis "⤵")
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq org-ellipsis "⤵")
+#+end_src
 
-   Indent text according to outline structure.
+Indent text according to outline structure.
 
-   #+begin_src emacs-lisp :tangle yes
-     (org-indent-mode 1)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (add-hook 'org-mode-hook #'org-indent-mode)
+#+end_src
 
 *** Source Blocks
 
-    Disable fontification.
+Disable fontification.
 
-    #+begin_src emacs-lisp :tangle yes
-      (setq org-src-fontify-natively nil)
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (setq org-src-fontify-natively nil)
+#+end_src
 
-    Make source code blocks more obvious by changing the background color.
+Make source code blocks more obvious by changing the background color.
 
-    #+begin_src emacs-lisp :tangle yes
-      (dolist (face '(org-block
-                      org-block-begin-line
-                      org-block-end-line))
-        (set-face-background face "gray17"))
-    #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (dolist (face '(org-block
+                  org-block-begin-line
+                  org-block-end-line))
+    (set-face-background face "gray17"))
+#+end_src
 
 *** Packages
 **** org-bullets
 
-     Show bullets in org-mode as UTF-8 characters
+Show bullets in org-mode as UTF-8 characters
 
-     #+begin_src emacs-lisp :tangle yes
-       (use-package org-bullets
-         :hook (org-mode . org-bullets-mode))
-     #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (use-package org-bullets
+    :hook (org-mode . org-bullets-mode))
+#+end_src
 
 * Finishing Touches
 ** Load Private Settings
 
-   For settings that are me specific.
+For settings that are me specific.
 
-   #+begin_src emacs-lisp :tangle yes
-     (load "~/Nextcloud/docs/private.el" t)
-   #+end_src
+#+begin_src emacs-lisp :tangle yes
+  (load "~/Nextcloud/docs/private.el" t)
+#+end_src
 
 
