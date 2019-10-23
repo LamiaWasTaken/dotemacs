@@ -95,6 +95,15 @@ Keep packages up-to-date.
 #+end_src
 
 ** From MELPA
+*** company
+
+Modular text completion framework
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package company
+    :hook (after-init . global-company-mode))
+#+end_src
+
 *** magit
 
 A Git porcelain inside Emacs.
