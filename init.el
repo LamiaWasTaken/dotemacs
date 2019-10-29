@@ -26,6 +26,8 @@ There are two things you can do about this warning:
   (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 ;; Load the config
 (org-babel-load-file (expand-file-name "lamia.org" user-emacs-directory))
