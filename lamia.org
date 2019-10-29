@@ -95,6 +95,15 @@ Keep packages up-to-date.
 #+end_src
 
 ** From MELPA
+*** ace-jump-mode
+
+a quick cursor location minor mode for emacs
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package ace-jump-mode
+    :bind ("C-." . ace-jump-mode))
+#+end_src
+
 *** company
 
 Modular text completion framework
