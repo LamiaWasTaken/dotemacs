@@ -67,6 +67,12 @@ Free up screen real estate.
   (tool-bar-mode -1)
 #+end_src
 
+Show empty lines after the end of a buffer.
+
+#+begin_src emacs-lisp :tangle yes
+  (setq-default indicate-empty-lines t)
+#+end_src
+
 * Indentation
 
 Indent with spaces instead of tabs.
