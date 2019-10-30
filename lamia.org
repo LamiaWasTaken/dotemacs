@@ -119,6 +119,25 @@ Modular text completion framework
     :hook (after-init . global-company-mode))
 #+end_src
 
+**** company-emoji
+
+company-mode backend for emoji
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package company-emoji
+    :config
+    (add-to-list 'company-backends 'company-emoji))
+#+end_src
+
+*** emojify
+
+Display emojis in Emacs :)
+
+#+begin_src emacs-lisp :tangle yes
+  (use-package emojify
+    :hook (after-init . global-emojify-mode))
+#+end_src
+
 *** magit
 
 A Git porcelain inside Emacs.
